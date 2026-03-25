@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "IBKR Tax Year Filler",
+  "version": "1.0",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "declarativeContent"
+  ],
+  "action": {
+    "default_title": "Set to Previous Tax Year"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "48": "icon48.png"
+  }
+}
