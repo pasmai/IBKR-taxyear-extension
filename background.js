@@ -1,4 +1,29 @@
 chrome.runtime.onInstalled.addListener(() => {
+  // 1. Clear existing rules
+  chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
+    // 2. Add a rule that only shows the action on IBKR
+    chrome.declarativeContent.onPageChanged.addRules([{
+      conditions: [
+        new chrome.declarativeContent.PageStateMatcher({
+          pageUrl: { hostContains: 'interactivebrokers' },
+        })
+      ],
+      actions: [new chrome.declarativeContent.ShowAction()]
+    }]);
+  });
+});
+
+// The rest of your runTaxFillLogic function follows below...
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    world: "MAIN", 
+    function: runTaxFillLogic
+  });
+});
+
+
+chrome.runtime.onInstalled.addListener(() => {
   chrome.action.disable();
   chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
     chrome.declarativeContent.onPageChanged.addRules([{
