@@ -1,3 +1,6 @@
+This Chrome Extension automatically sets a custom date range for the activity statements in IBKR to the previous tax year.
+IBKR provides options for _daily_, _monthly_ but unfortunately not a _yearly_ selection by default.
+
 ![demo usage](demo.png)
 
 
